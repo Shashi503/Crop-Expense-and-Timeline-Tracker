@@ -5,8 +5,8 @@ from datetime import date
 from utils import CROPS, ACTIVITY_CATEGORIES
 
 # ---------------- Sidebar: Logo and About Section ----------------
-# Display logo from the given file path in the sidebar
-st.sidebar.image("D:/Shashi Files/ipynb files/crop_expense_tracker/other files/foot-logo.png", use_column_width=True)
+# Display logo from the relative path in the sidebar
+st.sidebar.image("other files/foot-logo.png", use_container_width=True)
 
 # About section with developer information and data sources
 st.sidebar.header("About")
@@ -45,7 +45,8 @@ conn.commit()
 # Load crop growth data
 @st.cache_data
 def load_crop_data():
-    df = pd.read_excel("D:/Shashi Files/ipynb files/crop_expense_tracker/other files/Crop_Dataset.xlsx")
+    # Use a relative path to load the dataset from the 'other files' folder.
+    df = pd.read_excel("other files/Crop_Dataset.xlsx")
     df = df.dropna(subset=["Crop"])
     df.fillna(0, inplace=True)
     return df
